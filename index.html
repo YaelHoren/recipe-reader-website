@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>התחברות - ספר מתכונים</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="login-container">
+  <h1>כניסה</h1>
+  <input type="text" id="username" placeholder="שם משתמש" />
+  <input type="password" id="password" placeholder="סיסמה" />
+  <button onclick="login()">התחבר</button>
+  <p id="error-msg"></p>
+  
+  <p style="margin-top: 10px;">
+    עדיין אין לך חשבון?
+    <button onclick="toggleSignup()" style="margin-top: 5px;">לחץ להרשמה</button>
+  </p>
+</div>
+
+<!-- טופס הרשמה – מוסתר בהתחלה -->
+<div class="signup-container" id="signup" style="display: none;">
+  <h2>הרשמה</h2>
+  <input type="text" id="newUsername" placeholder="שם משתמש חדש" />
+  <input type="password" id="newPassword" placeholder="סיסמה חדשה" />
+  <button onclick="handleSignup()">צור משתמש</button>
+</div>
+
+
+
+    <script src="index.js"></script>
+</body>
+</html>
