@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>כל המתכונים</title>
+  <link rel="stylesheet" href="showAll.css" />
+  <link rel="stylesheet" href="./nav.css" />
+</head>
+<body>
+
+  <!-- Nav -->
+  <div id="nav-container"></div>
+
+  <!-- Recipe Grid -->
+  <div id="recipe-container" class="grid"></div>
+
+  <!-- Recipe Modal -->
+  <div id="recipe-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <h2 id="modal-title"></h2>
+      <img id="modal-image" alt="" style="max-width: 100%; border-radius: 8px;" />
+      <h4>רכיבים:</h4>
+      <ul id="modal-ingredients"></ul>
+      <h4>הוראות הכנה:</h4>
+      <ol id="modal-steps"></ol>
+
+      <!-- כפתורי הקראה -->
+      <div id="read-buttons" class="read-controls">
+        <img src="./images/play.png" id="play-btn" class="icon-button" alt="Play" />
+        <img src="./images/pause.png" id="pause-btn" class="icon-button" alt="Pause" style="display: none;" />
+        <img src="./images/restart.png" id="restart-btn" class="icon-button" alt="Restart" />
+        <img src="./images/pause.png" id="stop-btn" class="icon-button" alt="Stop" />
+      </div>
+
+      <!-- Delay Modal -->
+      <div id="delay-modal" class="delay-modal hidden">
+        <p>בחר/י זמן המתנה:</p>
+        <button onclick="setDelay(5)">5 שניות</button>
+        <button onclick="setDelay(10)">10 שניות</button>
+        <button onclick="setDelay(20)">20 שניות</button>
+        <button onclick="setDelay(40)">40 שניות</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+ 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadNav();
+      renderRecipes(); // loaded from showAll.js
+    });
+  </script>
+   <script src="./nav.js"></script>
+  <script src="showAll.js"></script>
+</body>
+</html>

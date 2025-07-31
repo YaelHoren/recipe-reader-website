@@ -2,75 +2,24 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>מתכונים</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>דף הבית</title>
   <link rel="stylesheet" href="homePage.css" />
   <link rel="stylesheet" href="../nav.css" />
-  
 </head>
 <body>
-<div id="nav-container"></div>
+  <div id="nav-container"></div>
 
-<h1>🍽 ספר המתכונים שלי</h1>
-<div id="admin-controls"></div>
+  <main>
+    <h1>ברוכים הבאים!</h1>
+    <p>בחר/י מהתפריט כדי לצפות במתכונים</p>
+  </main>
 
-
-  <div class="grid">
-    <div class="recipe-card" onclick="openModal(0)">
-      <img src="../images/חמאה.jpg" alt="חמאה" />
-      <h3>עוגיות חמאה עם שוקלד צ'יפס</h3>
-    </div>
-    <div class="recipe-card" onclick="openModal(1)">
-      <img src="../images/מאפינס.jpg" alt="מאפינס" />
-      <h3>מאפינס תפוחים ושיבולת שועל מופחת סוכר</h3>
-    </div>
-    <div class="recipe-card" onclick="openModal(2)">
-      <img src="../images/עוגת גבינה מנוקדת.jpg" alt="עוגת גבינה מנוקדת" />
-      <h3>עוגת גבינה מנוקדת</h3>
-    </div>
-    <div class="recipe-card" onclick="openModal(3)">
-      <img src="../images/עוגת מייפל.jpg" alt="עוגת מייפל" />
-      <h3>עוגת מייפל רכה ועסיסית</h3>
-    </div>
-  </div>
-
-  <!-- מודאל להצגת מתכון -->
-<div id="recipe-modal" class="modal" style="display:none;">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">×</span>
-    <h2 id="modal-title"></h2>
-    <img id="modal-image" alt="" style="max-width: 100%; border-radius: 8px;" />
-    <h4>רכיבים:</h4>
-    <ul id="modal-ingredients"></ul>
-    <h4>הוראות הכנה:</h4>
-    <ol id="modal-steps"></ol>
-
-    <!-- כפתורי הקראה -->
-    <div id="read-buttons" class="read-controls">
-      <img src="../images/play.png" id="play-btn" class="icon-button" alt="Play" />
-      <img src="../images/pause.png" id="pause-btn" class="icon-button" alt="Pause" style="display:none;" />
-      <img src="../images/restart.png" id="restart-btn" class="icon-button" alt="Restart" style="display:none;" />
-      <img src="../images/stop.png" id="stop-btn" class="icon-button" alt="Stop" style="display:none;" />
-    </div>
-
-    <!-- מודאל לבחירת זמן השהייה בין שורות -->
-    <div id="delay-modal">
-      <p>בחר/י זמן המתנה:</p>
-      <button onclick="setDelay(5)">5 שניות</button>
-      <button onclick="setDelay(10)">10 שניות</button>
-      <button onclick="setDelay(20)">20 שניות</button>
-      <button onclick="setDelay(40)">40 שניות</button>
-    </div>
-  </div>
-</div>
-
-<script>
+  <script src="../nav.js"></script>
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       loadNav();
     });
   </script>
-  <script src="homePage.js"></script>
-<script src="../nav.js"></script>
-  
 </body>
 </html>
