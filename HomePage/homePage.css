@@ -6,7 +6,7 @@ body {
   text-align: center;
 }
 
-nav {
+\nav {
   background: #333;
   color: #fff;
   padding: 10px;
@@ -16,6 +16,13 @@ nav a {
   color: #fff;
   margin: 0 10px;
   text-decoration: none;
+  
+.no-scroll {
+  overflow: hidden;
+}
+
+h1 {
+  margin-bottom: 40px;
 }
 
 .grid {
@@ -61,11 +68,94 @@ nav a {
   max-width: 600px;
   border-radius: 10px;
   position: relative;
+
+  /* גלילה פנימית */
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .close {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 5px;
+  display: inline-block;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.speech-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#speak-button,
+#stop-button {
+  background-color: #ffcc00;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#speak-button:hover,
+#stop-button:hover {
+  background-color: #ffdb4d;
+}
+
+.icon-button {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  margin: 0 4px;
+  vertical-align: middle;
+  background: none;
+  border: none;
+}
+
+.read-controls {
   position: absolute;
   top: 15px; left: 20px;
   font-size: 25px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.delay-modal {
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.delay-modal.hidden {
+  display: none;
+}
+
+.delay-modal button {
+  margin: 5px;
+  padding: 5px 10px;
   cursor: pointer;
 }
+
+.delay-modal{
+  display:none;
+      position: fixed;
+      top: 30%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: white; border: 1px solid #ccc;
+      padding: 20px; z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      border-radius: 8px;
+}
+
+

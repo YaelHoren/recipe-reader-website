@@ -1,23 +1,27 @@
 const defaultRecipes = [
   {
-    title: "בראוניז פרווה עם חמאת בוטנים",
-    image: "../images/בראוניז.jpg",
+    title: "עוגיות חמאה עם שוקולד צ'יפס",
+    image: "../images/חמאה.jpg",
     ingredients: [
-      "150 ג' שוקולד מריר (חבילה וחצי)", 
-      "150 מ\"ל שמן (קצת יותר מחצי כוס)",
-      "200 ג' סוכר (כוס)", 
-      "4 ביצים L", 
-      "60 מ\"ל שמנת מתוקה / בישול / ריץ / צמחית (רבע כוס)",
-      "2 כפות שטוחות אבקת קקאו", 
-      "קורט מלח", 
-      "140 ג' קמח רגיל (כוס)",
-      "2 כפות גדושות חמאת בוטנים"
-    ],
+
+  "200 גרם חמאה",
+  "3 כוסות קמח תופח",
+  "2/3 כוס סוכר",
+  "ביצה",
+  "1/2 כפית סודה לשתיה",
+  "קמצוץ מלח"
+],
+
     steps: [
-      "שוברים את השוקולד וממיסים עם שמן.",
-      "מערבבים עם ביצים, שמנת, קקאו, מלח וקמח.",
-      "יוצקים לתבנית, מטפטפים חמאת בוטנים, ואופים 30 דקות."
-    ]
+  "מערבבים הכל - לשים ביד.",
+  "מוסיפים:",
+  "100 גרם שוקולד חלב קצוץ",
+  "100 גרם שוקולד לבן חלבי קצוץ",
+  "200 גרם שוקולדצ'יפס",
+  "ומערבבים ויוצרים עיגולים.",
+  "אופים כ־10 דקות עד שהעוגיות מוזהבות."
+]
+
   },
   {
     title: "מאפינס תפוחים ושיבולת שועל מופחת סוכר",
@@ -91,16 +95,24 @@ function saveRecipes() {
   localStorage.setItem("recipes", JSON.stringify(recipes));
 }
 
+let isSpeaking = false;
+let stopRequested = false;
+
 function openModal(index) {
   const recipe = recipes[index];
-  document.getElementById("modal-title").textContent = recipe.title;
+
+  speechSynthesis.cancel();
+  isSpeaking = false;
+  stopRequested = false;
+
+  document.getElementById("modal-title").innerText = recipe.title;
   document.getElementById("modal-image").src = recipe.image;
 
   const ingredientsList = document.getElementById("modal-ingredients");
   ingredientsList.innerHTML = "";
-  recipe.ingredients.forEach(ing => {
+  recipe.ingredients.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = ing;
+    li.textContent = item;
     ingredientsList.appendChild(li);
   });
 
@@ -112,10 +124,65 @@ function openModal(index) {
     stepsList.appendChild(li);
   });
 
+  const buttonsDiv = document.getElementById("read-buttons");
+  buttonsDiv.innerHTML = `
+    <img src="../images/play.png" id="play-btn" class="icon-button" alt="Play" />
+    <img src="../images/pause.png" id="pause-btn" class="icon-button" alt="Pause" style="display: none;" />
+    <img src="../images/restart.png" id="restart-btn" class="icon-button" alt="Restart" />
+  `;
+
+  const playBtn = document.getElementById("play-btn");
+  const pauseBtn = document.getElementById("pause-btn");
+  const restartBtn = document.getElementById("restart-btn");
+
+  playBtn.onclick = () => {
+    const combinedSteps = [
+      `שם המתכון: ${recipe.title}`,
+      "המצרכים הם:",
+      ...recipe.ingredients,
+      "הוראות ההכנה:",
+      ...recipe.steps
+    ];
+
+    if (!isSpeaking) {
+      speakSteps(combinedSteps);
+      playBtn.style.display = "none";
+      pauseBtn.style.display = "inline-block";
+    } else {
+      speechSynthesis.resume();
+      playBtn.style.display = "none";
+      pauseBtn.style.display = "inline-block";
+    }
+  };
+
+  pauseBtn.onclick = () => {
+    speechSynthesis.pause();
+    playBtn.style.display = "inline-block";
+    pauseBtn.style.display = "none";
+  };
+
+  restartBtn.onclick = () => {
+    const combinedSteps = [
+      `שם המתכון: ${recipe.title}`,
+      "המצרכים הם:",
+      ...recipe.ingredients,
+      "הוראות ההכנה:",
+      ...recipe.steps
+    ];
+
+    speakSteps(combinedSteps, true);
+    playBtn.style.display = "none";
+    pauseBtn.style.display = "inline-block";
+  };
+
   document.getElementById("recipe-modal").style.display = "block";
 }
 
 function closeModal() {
+  stopSpeaking();
+  speechSynthesis.cancel();
+  isSpeaking = false;
+  stopRequested = false;
   document.getElementById("recipe-modal").style.display = "none";
 }
 
@@ -153,3 +220,36 @@ document.addEventListener("DOMContentLoaded", () => {
   renderRecipes();
   loadNav();
 });
+
+function speakSteps(steps, restart = false) {
+  if (restart) {
+    speechSynthesis.cancel();
+  }
+  isSpeaking = true;
+  stopRequested = false;
+
+  let index = 0;
+
+  function speakNext() {
+    if (stopRequested || index >= steps.length) {
+      isSpeaking = false;
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(steps[index]);
+    utterance.lang = "he-IL";
+    utterance.onend = () => {
+      index++;
+      if (!stopRequested) speakNext();
+    };
+    speechSynthesis.speak(utterance);
+  }
+
+  speakNext();
+}
+
+function stopSpeaking() {
+  stopRequested = true;
+  speechSynthesis.cancel();
+}
+
