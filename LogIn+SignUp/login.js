@@ -23,3 +23,4 @@ function login() {
     document.getElementById("error-msg").innerText = "משתמש או סיסמה שגויים";
   }
 }
+
