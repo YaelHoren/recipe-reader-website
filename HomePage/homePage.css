@@ -16,7 +16,8 @@ nav a {
   color: #fff;
   margin: 0 10px;
   text-decoration: none;
-  
+}
+ 
 .no-scroll {
   overflow: hidden;
 }
