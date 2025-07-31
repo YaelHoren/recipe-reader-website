@@ -89,17 +89,25 @@ const recipes = [
 
   }
 ];
+let isSpeaking = false;
+let stopRequested = false;
 
 function openModal(index) {
   const recipe = recipes[index];
-  document.getElementById("modal-title").textContent = recipe.title;
+
+  // איפוס מצב הקראה
+  speechSynthesis.cancel();
+  isSpeaking = false;
+  stopRequested = false;
+
+  document.getElementById("modal-title").innerText = recipe.title;
   document.getElementById("modal-image").src = recipe.image;
 
   const ingredientsList = document.getElementById("modal-ingredients");
   ingredientsList.innerHTML = "";
-  recipe.ingredients.forEach(ing => {
+  recipe.ingredients.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = ing;
+    li.textContent = item;
     ingredientsList.appendChild(li);
   });
 
@@ -111,9 +119,90 @@ function openModal(index) {
     stepsList.appendChild(li);
   });
 
+  // כפתורי הקראה
+  const buttonsDiv = document.getElementById("read-buttons");
+  buttonsDiv.innerHTML = `
+    <button id="play-btn">▶️</button>
+    <button id="pause-btn" style="display: none;">⏸️</button>
+    <button id="restart-btn">🔄</button>
+  `;
+
+  const playBtn = document.getElementById("play-btn");
+  const pauseBtn = document.getElementById("pause-btn");
+  const restartBtn = document.getElementById("restart-btn");
+
+ playBtn.onclick = () => {
+  const combinedSteps = [
+    `שם המתכון: ${recipe.title}`,
+    "המצרכים הם:",
+    ...recipe.ingredients,
+    "הוראות ההכנה:",
+    ...recipe.steps
+  ];
+
+  if (!isSpeaking) {
+    speakSteps(combinedSteps);
+    playBtn.style.display = "none";
+    pauseBtn.style.display = "inline-block";
+  } else {
+    speechSynthesis.resume();
+    playBtn.style.display = "none";
+    pauseBtn.style.display = "inline-block";
+  }
+};
+
+
+  pauseBtn.onclick = () => {
+    speechSynthesis.pause();
+    playBtn.style.display = "inline-block";
+    pauseBtn.style.display = "none";
+  };
+
+  restartBtn.onclick = () => {
+    speakSteps(recipe.steps, true);
+    playBtn.style.display = "none";
+    pauseBtn.style.display = "inline-block";
+  };
+
   document.getElementById("recipe-modal").style.display = "block";
 }
 
 function closeModal() {
+  stopSpeaking();
+  speechSynthesis.cancel();
+  isSpeaking = false;
+  stopRequested = false;
   document.getElementById("recipe-modal").style.display = "none";
+}
+
+function speakSteps(steps, restart = false) {
+  if (restart) {
+    speechSynthesis.cancel();
+  }
+  isSpeaking = true;
+  stopRequested = false;
+
+  let index = 0;
+
+  function speakNext() {
+    if (stopRequested || index >= steps.length) {
+      isSpeaking = false;
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(steps[index]);
+    utterance.lang = "he-IL";
+    utterance.onend = () => {
+      index++;
+      if (!stopRequested) speakNext();
+    };
+    speechSynthesis.speak(utterance);
+  }
+
+  speakNext();
+}
+
+function stopSpeaking() {
+  stopRequested = true;
+  speechSynthesis.cancel();
 }

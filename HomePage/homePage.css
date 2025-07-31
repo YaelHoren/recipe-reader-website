@@ -7,6 +7,10 @@ body {
   direction: rtl;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 h1 {
   margin-bottom: 40px;
 }
@@ -58,6 +62,10 @@ h1 {
   max-width: 500px;
   text-align: right;
   position: relative;
+
+  /* גלילה פנימית */
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .modal-content img {
@@ -67,9 +75,34 @@ h1 {
 }
 
 .close {
-  position: absolute;
-  top: 10px;
-  left: 20px;
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 5px;
+  display: inline-block;
   font-size: 24px;
   cursor: pointer;
+  z-index: 10;
 }
+
+.speech-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#speak-button,
+#stop-button {
+  background-color: #ffcc00;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#speak-button:hover,
+#stop-button:hover {
+  background-color: #ffdb4d;
+}
+

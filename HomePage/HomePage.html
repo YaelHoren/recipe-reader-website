@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -26,16 +25,20 @@
     </div>
     <div class="recipe-card" onclick="openModal(3)">
       <img src="../images/עוגת מייפל.jpg" alt="סלט ירקות" />
-      <h3>עוגת מייפל רכה ועסיסית ירקות</h3>
+      <h3>עוגת מייפל רכה ועסיסית</h3>
     </div>
   </div>
 
-   <!-- מודאל להצגת מתכון -->
+  <!-- מודאל להצגת מתכון -->
   <div id="recipe-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">×</span>
       <h2 id="modal-title"></h2>
-      <img id="modal-image" />
+
+      <!-- כפתורי קריאה דינמיים -->
+      <div id="read-buttons" style="margin: 1em 0;"></div>
+
+      <img id="modal-image" alt="" />
       <h4>רכיבים:</h4>
       <ul id="modal-ingredients"></ul>
       <h4>הוראות הכנה:</h4>
