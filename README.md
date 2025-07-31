@@ -10,3 +10,7 @@ JavaScript course final project: An interactive recipe website that allows users
 - Local data storage in `localStorage`
 
 The website is written in HTML, CSS, and JavaScript and is accessible via a free link.
+
+⭐ If you liked this project, feel free to give it a star!  
+🛠️ Suggestions or improvements? Open an issue or a pull request — contributions are welcome.
+
