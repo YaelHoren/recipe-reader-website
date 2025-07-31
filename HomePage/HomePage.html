@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>מתכונים</title>
   <link rel="stylesheet" href="homePage.css" />
+  <link rel="stylesheet" href="../nav.css" />
+  
 </head>
 <body>
+<div id="nav-container"></div>
 
-  <h1>🍽 ספר המתכונים שלי</h1>
+<h1>🍽 ספר המתכונים שלי</h1>
+<div id="admin-controls"></div>
+
 
   <div class="grid">
     <div class="recipe-card" onclick="openModal(0)">
@@ -30,7 +35,6 @@
   </div>
 
   <!-- מודאל להצגת מתכון -->
-  <!-- בתוך המודאל של המתכון -->
 <div id="recipe-modal" class="modal" style="display:none;">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">×</span>
@@ -60,7 +64,13 @@
   </div>
 </div>
 
-
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadNav();
+    });
+  </script>
   <script src="homePage.js"></script>
+<script src="../nav.js"></script>
+  
 </body>
 </html>

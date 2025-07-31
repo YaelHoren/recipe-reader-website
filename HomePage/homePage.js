@@ -1,8 +1,9 @@
-const recipes = [
+const defaultRecipes = [
   {
     title: "עוגיות חמאה עם שוקולד צ'יפס",
     image: "../images/חמאה.jpg",
     ingredients: [
+
   "200 גרם חמאה",
   "3 כוסות קמח תופח",
   "2/3 כוס סוכר",
@@ -28,67 +29,71 @@ const recipes = [
     ingredients: [
       "2 ביצים L",
       "80 מ\"ל שמן (שליש כוס)",
-      "שליש כוס סוכר חום דמררה",
+      "שליש כוס סוכר חום",
       "1/3 כוס סירופ מייפל",
-      "3 תפוחים מקולפים חתוכים לקוביות",
-      "כוס שיבולת שועל דקה (קוואקר)",
-      "140 ג' קמח רגיל (כוס)",
+      "3 תפוחים חתוכים לקוביות",
+      "כוס שיבולת שועל דקה",
+      "140 ג' קמח רגיל",
       "כפית קינמון",
       "כפית אבקת אפייה"
     ],
     steps: [
-      "לחמם תנור ל־180 מעלות ולשמן תבנית שקעים עם ספריי שמן.",
-      "בעזרת מטרפה לטרוף ביצים, סוכר וסירופ מייפל במשך כמה שניות. להוסיף את השמן וקוביות התפוחים, לערבב ולהוסיף את הקמח, שיבולת שועל, אבקת אפייה ולערבב לתערובת אחידה.",
-      "למלא את השקעים ולאפות כ־25 דקות. מומלץ לנעוץ קיסם במרכז המאפינס ולוודא שהוא יוצא נקי.",
-      "תנו למאפינס להתקרר ותיהנו מהריח והטעם המשגע 😊"
+      "לחמם תנור ולשמן תבנית שקעים.",
+      "מערבבים הכל לבלילה אחידה.",
+      "אופים כ־25 דקות עד שקיסם יוצא יבש."
     ]
   },
   {
     title: "עוגת גבינה מנוקדת",
     image: "../images/עוגת גבינה מנוקדת.jpg",
     ingredients: [
-      "750 ג' גבינה לבנה 5%",
+      "750 ג' גבינה לבנה",
       "200 ג' שמנת חמוצה",
-      "150 ג' יוגורט במתיקות מעודנת",
-      "250 ג' סוכר (כוס ורבע)",
-      "140 ג' קמח (כוס)",
-      "40 ג' אינסטנט פודינג וניל (2 כפות)",
-      "3 ביצים גדולות",
-      "2 כפות שטוחות אבקת קקאו"
+      "150 ג' יוגורט",
+      "250 ג' סוכר",
+      "140 ג' קמח",
+      "40 ג' אינסטנט פודינג וניל",
+      "3 ביצים",
+      "2 כפות אבקת קקאו"
     ],
     steps: [
-      "לחמם תנור ל־180 מעלות",
-      "לערבב את הגבינה, היוגורט, השמנת והסוכר",
-      "להוסיף את הביצים, הקמח ואינסטנט וניל ולערבב לבלילה אחידה",
-      "להוציא כ־4–6 כפות בלילה, לערבב עם הקקאו ולשמור בצד",
-      "לשטח את הבלילה הבהירה בתבנית, לזלף את הכהה כנקודות מעל",
-      "לאפות כ־40 דקות עד שהעוגה מתייצבת",
-      "לקרר כמה שעות לפני שחותכים – עדיף להכין יום מראש"
+      "מערבבים את כל הרכיבים (למעט הקקאו).",
+      "שומרים חלק, מערבבים עם קקאו ויוצקים נקודות מעל.",
+      "אופים 40 דקות ומצננים היטב."
     ]
   },
   {
     title: "עוגת מייפל רכה ועסיסית ירקות",
     image: "../images/עוגת מייפל.jpg",
     ingredients: [
-      "3 ביצים גדולות / 4 ביצים L",
-      "200 ג' סוכר (כוס)",
-      "180 מ\"ל שמן (3/4 כוס)",
-      "240 מ\"ל תה (כוס)",
+      "3–4 ביצים",
+      "200 ג' סוכר",
+      "180 מ\"ל שמן",
+      "240 מ\"ל תה",
       "כפית קינמון",
-      "כפית שטוחה אבקת סודה לשתייה",
-      "280 ג' קמח (2 כוסות)",
+      "כפית סודה לשתייה",
+      "280 ג' קמח",
       "2 כפיות אבקת אפייה",
-      "סירופ מייפל (לקישוט / לציפוי)"
+      "סירופ מייפל לקישוט"
     ],
     steps: [
-      "להכין כוס תה כמו שאוהבים, להשאיר את התיון 5 דקות, להוציא ולקרר את התה 15 דקות",
-      "לחמם תנור ל־180 מעלות",
-      "במיקסר (או ידנית) לערבב ביצים, סוכר, תה, שמן ואז את שאר המצרכים עד לקבלת בלילה נוזלית ואחידה",
-      "להעביר לתבנית משומנת ולאפות כ־45–50 דקות או עד שקיסם יוצא יבש",
-      "כשהעוגה יוצאת מהתנור, להזליף עליה כחצי כוס סירופ מייפל בנדיבות"
+      "מכינים תה ומצננים.",
+      "מערבבים את כל החומרים לבלילה.",
+      "אופים כ־50 דקות ומזלפים מייפל חם."
     ]
   }
 ];
+
+function loadRecipes() {
+  const saved = localStorage.getItem("recipes");
+  if (saved) return JSON.parse(saved);
+  localStorage.setItem("recipes", JSON.stringify(defaultRecipes));
+  return defaultRecipes;
+}
+
+function saveRecipes() {
+  localStorage.setItem("recipes", JSON.stringify(recipes));
+}
 
 let isSpeaking = false;
 let stopRequested = false;
@@ -96,7 +101,6 @@ let stopRequested = false;
 function openModal(index) {
   const recipe = recipes[index];
 
-  // איפוס מצב הקראה
   speechSynthesis.cancel();
   isSpeaking = false;
   stopRequested = false;
@@ -120,7 +124,6 @@ function openModal(index) {
     stepsList.appendChild(li);
   });
 
-  // כפתורי הקראה עם תמונות
   const buttonsDiv = document.getElementById("read-buttons");
   buttonsDiv.innerHTML = `
     <img src="../images/play.png" id="play-btn" class="icon-button" alt="Play" />
@@ -172,7 +175,6 @@ function openModal(index) {
     pauseBtn.style.display = "inline-block";
   };
 
-  // לפתוח את המודאל
   document.getElementById("recipe-modal").style.display = "block";
 }
 
@@ -183,6 +185,41 @@ function closeModal() {
   stopRequested = false;
   document.getElementById("recipe-modal").style.display = "none";
 }
+
+function renderRecipes() {
+  const container = document.getElementById("recipe-container");
+  container.innerHTML = "";
+  recipes.forEach((recipe, index) => {
+    const card = document.createElement("div");
+    card.className = "recipe-card";
+    card.onclick = () => openModal(index);
+    card.innerHTML = `
+      <img src="${recipe.image}" alt="${recipe.title}" />
+      <h3>${recipe.title}</h3>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function showAdminNavIfNeeded() {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const adminLinkContainer = document.getElementById("admin-link-container");
+
+  if (currentUser?.isAdmin) {
+    const link = document.createElement("a");
+    link.href = "../HomePage/settings/Settings.html";
+    link.innerText = "הגדרות מערכת";
+    adminLinkContainer.appendChild(link);
+
+    
+  }
+}
+
+let recipes = loadRecipes();
+document.addEventListener("DOMContentLoaded", () => {
+  renderRecipes();
+  loadNav();
+});
 
 function speakSteps(steps, restart = false) {
   if (restart) {
@@ -215,3 +252,4 @@ function stopSpeaking() {
   stopRequested = true;
   speechSynthesis.cancel();
 }
+

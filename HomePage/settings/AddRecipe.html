@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>➕ הוסף מתכון</title>
+  <link rel="stylesheet" href="Settings.css" />
+    <link rel="stylesheet" href="../../nav.css" />
+
+</head>
+<body>
+  <h1>➕ הוסף מתכון</h1>
+  <div id="nav-container"></div>
+
+  <form id="add-form" class="form">
+    <input type="text" id="title" placeholder="שם המתכון" required />
+    <input type="text" id="image" placeholder="קישור לתמונה (URL)" />
+    <textarea id="ingredients" placeholder="רכיבים (כל רכיב בשורה חדשה)" required></textarea>
+    <textarea id="steps" placeholder="שלבי הכנה (כל שלב בשורה חדשה)" required></textarea>
+    <button type="submit" class="modern-button">שמור</button>
+  </form>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadNav();
+    });
+  </script>
+  <script src="../../nav.js"></script>
+  <script src="addRecipe.js"></script>
+</body>
+</html>

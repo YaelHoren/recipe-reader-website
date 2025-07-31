@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <title>עריכת מתכון</title>
+  <link rel="stylesheet" href="Settings.css">
+    <link rel="stylesheet" href="../../nav.css" />
+
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <h1>עריכת מתכון</h1>
+  <input type="text" id="search" placeholder="חפש מתכון..."/>
+
+  <div id="edit-form-container" style="display: none;">
+    <form id="edit-form">
+      <label>כותרת:
+        <input type="text" id="edit-title" required />
+      </label>
+      <label>קישור לתמונה:
+        <input type="text" id="edit-image" />
+      </label>
+      <label>מצרכים:
+        <textarea id="edit-ingredients" rows="5"></textarea>
+      </label>
+      <label>שלבים:
+        <textarea id="edit-steps" rows="5"></textarea>
+      </label>
+      <div class="form-buttons">
+        <button type="submit">💾 שמור</button>
+        <button type="button" id="cancel-edit">❌ ביטול</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="recipes-list"></div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadNav();
+    });
+  </script>
+  <script src="../../nav.js"></script>
+  <script src="editRecipe.js"></script>
+</body>
+</html>
