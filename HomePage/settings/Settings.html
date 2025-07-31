@@ -5,13 +5,24 @@
   <title>הגדרות מערכת</title>
   <link rel="stylesheet" href="homePage.css" />
   <link rel="stylesheet" href="settings.css" />
+    <link rel="stylesheet" href="../../nav.css" />
+
 </head>
 <body>
+    <div id="nav-container"></div>
+
   <h1>⚙️ הגדרות מערכת</h1>
+
   <div class="button-group">
     <button class="modern-button" onclick="location.href='addRecipe.html'">➕ הוסף מתכון</button>
     <button class="modern-button" onclick="location.href='editRecipe.html'">✏️ ערוך מתכון</button>
     <button class="modern-button" onclick="location.href='deleteRecipe.html'">❌ מחק מתכון</button>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadNav();
+    });
+  </script>
+  <script src="../../nav.js"></script>
 </body>
 </html>

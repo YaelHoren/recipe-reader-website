@@ -151,5 +151,5 @@ function showAdminNavIfNeeded() {
 let recipes = loadRecipes();
 document.addEventListener("DOMContentLoaded", () => {
   renderRecipes();
-  showAdminNavIfNeeded();
+  loadNav();
 });

@@ -4,8 +4,12 @@
   <meta charset="UTF-8" />
   <title>עריכת מתכון</title>
   <link rel="stylesheet" href="Settings.css">
+    <link rel="stylesheet" href="../../nav.css" />
+
 </head>
 <body>
+  <div id="nav-container"></div>
+
   <h1>עריכת מתכון</h1>
   <input type="text" id="search" placeholder="חפש מתכון..."/>
 
@@ -31,7 +35,12 @@
   </div>
 
   <div id="recipes-list"></div>
-
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadNav();
+    });
+  </script>
+  <script src="../../nav.js"></script>
   <script src="editRecipe.js"></script>
 </body>
 </html>

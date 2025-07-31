@@ -4,14 +4,23 @@
   <meta charset="UTF-8" />
   <title>❌ מחק מתכון</title>
   <link rel="stylesheet" href="Settings.css" />
+    <link rel="stylesheet" href="../../nav.css" />
+
 </head>
 <body>
+  <div id="nav-container"></div>
+
   <h1>❌ מחק מתכון</h1>
 
   <input id="search" type="text" placeholder="חפש מתכון למחיקה לפי שם..." />
 
   <div id="recipes-list"></div>
-
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadNav();
+    });
+  </script>
+  <script src="../../nav.js"></script>
   <script src="deleteRecipe.js"></script>
 </body>
 </html>

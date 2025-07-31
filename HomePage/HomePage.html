@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>מתכונים טעימים</title>
   <link rel="stylesheet" href="homePage.css" />
+  <link rel="stylesheet" href="../nav.css" />
+  
 </head>
 <body>
-<nav id="main-nav">
-  <a href="../HomePage/HomePage.html">דף הבית</a>
-  <span id="admin-link-container"></span>
-</nav>
+<div id="nav-container"></div>
 
 <h1>🍽 ספר המתכונים שלי</h1>
 <div id="admin-controls"></div>
@@ -31,7 +30,12 @@
     <ol id="modal-steps"></ol>
   </div>
 </div>
-
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadNav();
+    });
+  </script>
 <script src="homePage.js"></script>
+<script src="../nav.js"></script>
 </body>
 </html>
