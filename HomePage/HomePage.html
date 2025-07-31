@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>מתכונים טעימים</title>
+  <title>מתכונים</title>
   <link rel="stylesheet" href="homePage.css" />
 </head>
 <body>
@@ -12,19 +12,19 @@
 
   <div class="grid">
     <div class="recipe-card" onclick="openModal(0)">
-      <img src="../images/בראוניז.jpg" alt="פסטה" />
+      <img src="../images/בראוניז.jpg" alt="בראוניז" />
       <h3>בראוניז פרווה עם חמאת בוטנים</h3>
     </div>
     <div class="recipe-card" onclick="openModal(1)">
-      <img src="../images/מאפינס.jpg" alt="שקשוקה" />
+      <img src="../images/מאפינס.jpg" alt="מאפינס" />
       <h3>מאפינס תפוחים ושיבולת שועל מופחת סוכר</h3>
     </div>
     <div class="recipe-card" onclick="openModal(2)">
-      <img src="../images/עוגת גבינה מנוקדת.jpg" alt="פנקייק" />
+      <img src="../images/עוגת גבינה מנוקדת.jpg" alt="עוגת גבינה מנוקדת" />
       <h3>עוגת גבינה מנוקדת</h3>
     </div>
     <div class="recipe-card" onclick="openModal(3)">
-      <img src="../images/עוגת מייפל.jpg" alt="סלט ירקות" />
+      <img src="../images/עוגת מייפל.jpg" alt="עוגת מייפל" />
       <h3>עוגת מייפל רכה ועסיסית</h3>
     </div>
   </div>
@@ -38,7 +38,7 @@
       <!-- כפתורי קריאה דינמיים -->
       <div id="read-buttons" style="margin: 1em 0;"></div>
 
-      <img id="modal-image" alt="" />
+      <img id="modal-image" alt="" style="max-width: 100%; border-radius: 8px;" />
       <h4>רכיבים:</h4>
       <ul id="modal-ingredients"></ul>
       <h4>הוראות הכנה:</h4>

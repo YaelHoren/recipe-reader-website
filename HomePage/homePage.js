@@ -11,7 +11,8 @@ const recipes = [
       "2 כפות שטוחות אבקת קקאו", 
       "קורט מלח (כמה שנתפס בין שתי אצבעות)", 
       "140 ג' קמח רגיל (כוס)",
-      "2 כפות גדושות חמאת בוטנים"],
+      "2 כפות גדושות חמאת בוטנים"
+    ],
     steps: [
       "שוברים את השוקולד לקוביות, שמים בקערה יחד עם השמן וממיסים כדקה במיקרו (לכל מיקרו יש את הזמן שלו). ברגע שהשוקולד רך – מוציאים ומערבבים לקרם אחיד וחלק ללא גושים קטנים.",
       "בעזרת מטרפה טורפים כדקה את הביצים והסוכר, ומוסיפים לשוקולד תוך כדי ערבוב מהיר ונמרץ. מוסיפים את השמנת, הקקאו, המלח ומסיימים עם הקמח. מערבבים לעיסה אחידה וחלקה.",
@@ -86,9 +87,9 @@ const recipes = [
       "להעביר לתבנית משומנת ולאפות כ־45–50 דקות או עד שקיסם יוצא יבש",
       "כשהעוגה יוצאת מהתנור, להזליף עליה כחצי כוס סירופ מייפל בנדיבות"
     ]
-
   }
 ];
+
 let isSpeaking = false;
 let stopRequested = false;
 
@@ -119,38 +120,37 @@ function openModal(index) {
     stepsList.appendChild(li);
   });
 
-  // כפתורי הקראה
+  // כפתורי הקראה עם תמונות
   const buttonsDiv = document.getElementById("read-buttons");
   buttonsDiv.innerHTML = `
-    <button id="play-btn">▶️</button>
-    <button id="pause-btn" style="display: none;">⏸️</button>
-    <button id="restart-btn">🔄</button>
+    <img src="../images/play.png" id="play-btn" class="icon-button" alt="Play" />
+    <img src="../images/pause.png" id="pause-btn" class="icon-button" alt="Pause" style="display: none;" />
+    <img src="../images/restart.png" id="restart-btn" class="icon-button" alt="Restart" />
   `;
 
   const playBtn = document.getElementById("play-btn");
   const pauseBtn = document.getElementById("pause-btn");
   const restartBtn = document.getElementById("restart-btn");
 
- playBtn.onclick = () => {
-  const combinedSteps = [
-    `שם המתכון: ${recipe.title}`,
-    "המצרכים הם:",
-    ...recipe.ingredients,
-    "הוראות ההכנה:",
-    ...recipe.steps
-  ];
+  playBtn.onclick = () => {
+    const combinedSteps = [
+      `שם המתכון: ${recipe.title}`,
+      "המצרכים הם:",
+      ...recipe.ingredients,
+      "הוראות ההכנה:",
+      ...recipe.steps
+    ];
 
-  if (!isSpeaking) {
-    speakSteps(combinedSteps);
-    playBtn.style.display = "none";
-    pauseBtn.style.display = "inline-block";
-  } else {
-    speechSynthesis.resume();
-    playBtn.style.display = "none";
-    pauseBtn.style.display = "inline-block";
-  }
-};
-
+    if (!isSpeaking) {
+      speakSteps(combinedSteps);
+      playBtn.style.display = "none";
+      pauseBtn.style.display = "inline-block";
+    } else {
+      speechSynthesis.resume();
+      playBtn.style.display = "none";
+      pauseBtn.style.display = "inline-block";
+    }
+  };
 
   pauseBtn.onclick = () => {
     speechSynthesis.pause();
@@ -159,11 +159,20 @@ function openModal(index) {
   };
 
   restartBtn.onclick = () => {
-    speakSteps(recipe.steps, true);
+    const combinedSteps = [
+      `שם המתכון: ${recipe.title}`,
+      "המצרכים הם:",
+      ...recipe.ingredients,
+      "הוראות ההכנה:",
+      ...recipe.steps
+    ];
+
+    speakSteps(combinedSteps, true);
     playBtn.style.display = "none";
     pauseBtn.style.display = "inline-block";
   };
 
+  // לפתוח את המודאל
   document.getElementById("recipe-modal").style.display = "block";
 }
 
