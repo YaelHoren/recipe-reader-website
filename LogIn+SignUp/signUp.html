@@ -6,14 +6,55 @@
   <link rel="stylesheet" href="login.css" />
 </head>
 <body>
+  <div id="nav-container"></div>
+
   <div class="login-container">
     <h1>הרשמה</h1>
     <input type="text" id="newUsername" placeholder="שם משתמש" />
     <input type="password" id="newPassword" placeholder="סיסמה" />
     <button onclick="handleSignup()">צור משתמש</button>
-    <p id="error-msg"></p>
+    <p id="error-msg" style="color:red;"></p>
     <p style="margin-top: 10px;">כבר יש לך חשבון? <a href="login.html">כניסה</a></p>
   </div>
-  <script src="signUp.js"></script>
+
+  <script src="../nav.js"></script>
+  <script>
+    loadNav();
+
+    function loadUsers() {
+      return JSON.parse(localStorage.getItem("users")) || [];
+    }
+
+    function saveUsers(users) {
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    function handleSignup() {
+      const username = document.getElementById("newUsername").value.trim();
+      const password = document.getElementById("newPassword").value.trim();
+      const errorMsg = document.getElementById("error-msg");
+
+      if (!username || !password) {
+        errorMsg.innerText = "נא למלא שם משתמש וסיסמה";
+        return;
+      }
+
+      const users = loadUsers();
+      if (users.find(u => u.username === username)) {
+        errorMsg.innerText = "שם המשתמש כבר קיים";
+        return;
+      }
+
+      users.push({ username, password });
+      saveUsers(users);
+      errorMsg.style.color = "green";
+      errorMsg.innerText = "נרשמת בהצלחה! תוכל להתחבר עכשיו.";
+      
+      // אופציונלי: להפנות אוטומטית לדף התחברות אחרי שניות ספורות
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 1500);
+    }
+  </script>
 </body>
 </html>

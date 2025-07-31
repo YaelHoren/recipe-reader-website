@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <title>📖 הצג את כל המתכונים</title>
+  <link rel="stylesheet" href="../login.css" />
+  <script>
+    // בדיקה למשתמש מחובר
+    const currentUser = localStorage.getItem("currentUser");
+    if (!currentUser) {
+      window.location.href = "../HomePage/HomePage.html"; // אם לא מחובר, הפניה לדף הבית
+    }
+  </script>
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <h1>רשימת מתכונים</h1>
+  <!-- כאן תוכן המתכונים -->
+
+  <script src="../LogIn+SignUp/nav.js"></script>
+  <script>
+    loadNav();
+  </script>
+</body>
+</html>
